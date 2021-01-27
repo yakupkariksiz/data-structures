@@ -1,22 +1,22 @@
 package sorting.bubble;
 
+import java.util.Arrays;
+
 public class BubbleSort {
 
-    public void sort(int[] intArray) {
-        for (int lastUnsortedIndex = intArray.length - 1; lastUnsortedIndex > 0; lastUnsortedIndex--) {
+    public void sort(int[] array) {
+        for (int lastUnsortedIndex = array.length - 1; lastUnsortedIndex > 0; lastUnsortedIndex--) {
             for (int i = 0; i < lastUnsortedIndex; i++) {
-                if (intArray[i] > intArray[i + 1]) {
-                    swap(intArray, i, i + 1);
+                if (array[i] > array[i + 1]) {
+                    swap(array, i, i + 1);
                 }
             }
         }
-        print(intArray);
+        print(array);
     }
 
-    private void print(int[] intArray) {
-        for (int i = 0; i < intArray.length; i++) {
-            System.out.println(intArray[i]);
-        }
+    private void print(int[] array) {
+        Arrays.toString(array);
     }
 
     private void swap(int[] intArray, int i, int j) {
