@@ -28,20 +28,17 @@ public class ArrayQueue {
             throw new NoSuchElementException();
         }
 
-        Employee employee = queue[front];
+        Employee removed = queue[front];
         queue[front] = null;
         front++;
-        if (size() == 0) {
-            front = 0;
-            back = 0;
-        }
-        return employee;
+        return removed;
     }
 
     Employee peek() {
         if (size() == 0) {
             throw new NoSuchElementException();
         }
+
         return queue[front];
     }
 
@@ -51,7 +48,9 @@ public class ArrayQueue {
 
     void printQueue() {
         for (int i = front; i < back; i++) {
-            System.out.println(queue[i]);
+            Employee employee = queue[i];
+            System.out.println(employee);
         }
     }
+
 }
