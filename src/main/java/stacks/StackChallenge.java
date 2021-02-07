@@ -33,7 +33,6 @@ class StackChallenge {
         }
 
         String originalValue = originalWithoutPunctuation.toString();
-        ListIterator<Character> iterator = linkedStack.stack.listIterator();
         StringBuilder reversedB = new StringBuilder();
 
         while (!linkedStack.stack.isEmpty()) {

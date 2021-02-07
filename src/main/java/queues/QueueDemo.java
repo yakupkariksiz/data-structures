@@ -10,19 +10,28 @@ public class QueueDemo {
         Employee young = new Employee("young", "younglast", 40);
         Employee youngest = new Employee("youngest", "youngestlast", 30);
 
-        ArrayQueue queue = new ArrayQueue(10);
+        ArrayQueue queue = new ArrayQueue(5);
+
+        /*
+        queue.add(oldest);
+        queue.add(older);
+        queue.remove();
+        queue.add(mid);
+        queue.remove();
+        queue.add(young);
+        queue.remove();
+        queue.add(youngest);
+        queue.remove();
+        queue.add(oldest);
+
+        queue.printQueue();
+        */
+
         queue.add(oldest);
         queue.add(older);
         queue.add(mid);
         queue.add(young);
         queue.add(youngest);
-        //queue.printQueue();
-        //System.out.println("Peeked : " + queue.peek());
-
-        System.out.println("Removed from queue : " + queue.remove());
-        System.out.println("Removed from queue : " + queue.remove());
-        System.out.println("Removed from queue : " + queue.remove());
-        System.out.println("Removed from queue : " + queue.remove());
-        System.out.println("Removed from queue : " + queue.remove());
+        queue.printQueue();
     }
 }
