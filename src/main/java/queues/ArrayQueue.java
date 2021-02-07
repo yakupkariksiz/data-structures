@@ -13,14 +13,25 @@ public class ArrayQueue {
     }
 
     void add(Employee employee) {
-        if (back == queue.length) {
+        if (size() == queue.length - 1) {
+            int numItems = size();
             Employee[] newArray = new Employee[2 * queue.length];
-            System.arraycopy(queue, 0, newArray, 0, queue.length);
+
+            System.arraycopy(queue, front, newArray, 0, queue.length - front);
+            System.arraycopy(queue, 0, newArray, queue.length - front, back);
+
             queue = newArray;
+
+            front = 0;
+            back = numItems;
         }
 
         queue[back] = employee;
-        back++;
+        if (back < queue.length - 1) {
+            back++;
+        } else {
+            back = 0;
+        }
     }
 
     Employee remove() {
@@ -31,6 +42,12 @@ public class ArrayQueue {
         Employee removed = queue[front];
         queue[front] = null;
         front++;
+        if (size() == 0) {
+            front = 0;
+            back = 0;
+        } else if (front == queue.length) {
+            front = 0;
+        }
         return removed;
     }
 
@@ -43,14 +60,28 @@ public class ArrayQueue {
     }
 
     int size() {
-        return back - front;
-    }
-
-    void printQueue() {
-        for (int i = front; i < back; i++) {
-            Employee employee = queue[i];
-            System.out.println(employee);
+        if (front <= back) {
+            return back - front;
+        } else {
+            return back - front + queue.length;
         }
     }
 
+    void printQueue() {
+        if (front <= back) {
+            for (int i = front; i < back; i++) {
+                Employee employee = queue[i];
+                System.out.println(employee);
+            }
+        } else {
+            for (int i = front; i < queue.length; i++) {
+                Employee employee = queue[i];
+                System.out.println(employee);
+            }
+            for (int i = 0; i < back; i++) {
+                Employee employee = queue[i];
+                System.out.println(employee);
+            }
+        }
+    }
 }
